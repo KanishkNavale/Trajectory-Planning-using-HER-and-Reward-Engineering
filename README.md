@@ -14,13 +14,13 @@ Trajectory planning based on Reinforcement Learning with Hindsight Experience Re
 ## Training History,
 * Measure: Accumulated Rewards over Episodes
 1. Dense Reward Engineering,
-<p ><img src="Test Analysis/Reward Engg: Accumulated Rewards vs Episodes.png" width="500" ></p>
+<p ><img src="Test Analysis/Reward Engg: Accumulated Rewards vs Episodes.png" width="300" ></p>
 
 2. HER,
-<p ><img src="Test Analysis/HER: Accumulated Rewards vs Episodes.png" width="500" ></p>
+<p ><img src="Test Analysis/HER: Accumulated Rewards vs Episodes.png" width="300" ></p>
 
 3. HER + Dense Reward Engineering,
-<p ><img src="Test Analysis/HER + Reward Engg: Accumulated Rewards vs Episodes.png" width="500" ></p>
+<p ><img src="Test Analysis/HER + Reward Engg: Accumulated Rewards vs Episodes.png" width="300" ></p>
 
 ## Dependencies,
 Install dependencies using:
