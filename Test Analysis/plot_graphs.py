@@ -23,7 +23,7 @@ def plot_graph(data, smoothing, color, title):
     plt.plot(data, c=color, alpha=0.25, label='Accumulated Rewards')
     plt.plot(y, c=color)
     plt.xlabel('Episodes')
-    plt.ylabel('Accumulate Rewards')
+    plt.ylabel('Accumulated Rewards')
     plt.grid(True)
     plt.legend(loc='best')
     plt.title(title)
