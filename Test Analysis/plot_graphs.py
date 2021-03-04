@@ -37,9 +37,9 @@ if __name__ == '__main__':
     her_re = np.load ('HER + Reward Engieering/score_history.npy')
 
     # Plot the data
-    her = plot_graph(her, 250, 'red', 'HER: Accumulated Rewards vs Episodes')
-    re = plot_graph(re, 250, 'blue', 'Reward Engg: Accumulated Rewards vs Episodes')
-    her_re = plot_graph(her_re, 250, 'green', 'HER + Reward Engg: Accumulated Rewards vs Episodes')
+    her = plot_graph(her, 10, 'red', 'HER: Accumulated Rewards vs Episodes')
+    re = plot_graph(re, 10, 'blue', 'Reward Engg: Accumulated Rewards vs Episodes')
+    her_re = plot_graph(her_re, 10, 'green', 'HER + Reward Engg: Accumulated Rewards vs Episodes')
     
     
     
