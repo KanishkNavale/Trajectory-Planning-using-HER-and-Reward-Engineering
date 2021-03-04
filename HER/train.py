@@ -5,10 +5,13 @@ from ddpg import Agent
 if __name__ == "__main__":
     # Load the environment
     env = gym.make('FetchReach-v1')
-    ip_shape =  env.observation_space['desired_goal'].shape[0]
+    desiredgoal_shape =  env.observation_space['desired_goal'].shape[0]
+    achievedgoal_shape =  env.observation_space['achieved_goal'].shape[0]
+    observation_shape =  env.observation_space['observation'].shape[0]
     action_shape = env.action_space.shape[0]
+    state_shape = observation_shape + desiredgoal_shape
     
-    agent = Agent(input_dims= ip_shape, env=env, n_actions= action_shape)
+    agent = Agent(input_dims= state_shape, env=env, n_actions= action_shape)
     best_score = env.reward_range[0]
     score_history = []
     load_checkpoint = False
@@ -18,20 +21,24 @@ if __name__ == "__main__":
         n_steps = 0
         while n_steps <= agent.batch_size:
             state = env.reset().values()
-            pure_states, curr_pos, goal_pos = state
+            obs, curr_pos, goal_pos = state
             init_pos = curr_pos
             action = env.action_space.sample()
             
             next_state, reward, done, info =  env.step(action)
-            next_pure_states, next_curr_pos, goal_pos = next_state.values()
+            next_obs, next_curr_pos, goal_pos = next_state.values()
             
             # Add Normal Experience to memory
-            agent.recall(curr_pos, goal_pos, action, reward, next_curr_pos, done)
+            exp = np.concatenate((obs, goal_pos))
+            next_exp = np.concatenate((next_obs, goal_pos))
+            agent.remember(exp.reshape((state_shape,)), action, reward, next_exp.reshape((state_shape,)), done)
             
             # Add 'Hindsight' Experience to memory
+            exp = np.concatenate((obs, curr_pos))
+            next_exp = np.concatenate((next_obs, next_curr_pos))
             fake_goal = curr_pos.copy()
             fake_reward = env.compute_reward(curr_pos, fake_goal, info)
-            agent.recall(curr_pos, goal_pos, action, reward, next_curr_pos, True)
+            agent.remember(exp.reshape((state_shape,)), action, fake_reward, next_exp.reshape((state_shape,)), True)
             n_steps += 1
             
         agent.learn()
@@ -42,33 +49,35 @@ if __name__ == "__main__":
 
     for i in range(n_games):
         state = env.reset().values()
-        pure_states, curr_pos, goal_pos = state
+        obs, curr_pos, goal_pos = state
         init_pos = curr_pos
-        done = False
         score = 0
 
         for j in range(1, env._max_episode_steps+1):
-            if j % n_games == 0:
-                env.render()
             
-            action = agent.choose_action(curr_pos, goal_pos)
+            action = agent.choose_action(np.concatenate((obs, goal_pos)))
             next_state, reward, done, info =  env.step(action)
-            next_pure_states, next_curr_pos, goal_pos = next_state.values()
-            score += reward
+            next_obs, next_curr_pos, goal_pos = next_state.values()
             
             # Add Normal Experience to memory
-            agent.recall(curr_pos, goal_pos, action, reward, next_curr_pos, done)
+            exp = np.concatenate((obs, goal_pos))
+            next_exp = np.concatenate((next_obs, goal_pos))
+            agent.remember(exp.reshape((state_shape,)), action, reward, next_exp.reshape((state_shape,)), done)
             
             # Add 'Hindsight' Experience to memory
+            exp = np.concatenate((obs, curr_pos))
+            next_exp = np.concatenate((next_obs, next_curr_pos))
             fake_goal = curr_pos.copy()
             fake_reward = env.compute_reward(curr_pos, fake_goal, info)
-            agent.recall(curr_pos, goal_pos, action, reward, next_curr_pos, True)
+            agent.remember(exp.reshape((state_shape,)), action, fake_reward, next_exp.reshape((state_shape,)), True)
             
             if not load_checkpoint:
                 agent.learn()
-            curr_pos = next_curr_pos 
-            
-        env.close()     
+                
+            curr_pos = next_curr_pos
+            obs = next_obs 
+            score += reward
+              
         score_history.append(score)
         avg_score = np.mean(score_history[-100:])
 
