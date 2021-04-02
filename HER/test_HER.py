@@ -11,12 +11,12 @@ def test(env, n_games):
     achievedgoal_shape =  env.observation_space['achieved_goal'].shape[0]
     observation_shape =  env.observation_space['observation'].shape[0]
     action_shape = env.action_space.shape[0]
-    state_shape = observation_shape + desiredgoal_shape
+    state_shape = observation_shape + desiredgoal_shape + achievedgoal_shape
     agent = Agent(input_dims= state_shape, env=env, n_actions= action_shape)
     
     state = env.reset().values()
     obs, curr_pos, goal_pos = state
-    agent.choose_action(np.concatenate((obs, goal_pos)))
+    agent.choose_action(np.concatenate((obs, curr_pos, goal_pos)))
     agent.actor.load_weights('HER/actor.h5')
 
     # Play 10 games
@@ -30,7 +30,7 @@ def test(env, n_games):
         while not done:
             env.render()    
             
-            action = agent.choose_action(np.concatenate((obs, goal_pos)))
+            action = agent.choose_action(np.concatenate((obs, curr_pos, goal_pos)))
             next_state, reward, done, info =  env.step(action)
             next_obs, next_curr_pos, goal_pos = next_state.values()
             
