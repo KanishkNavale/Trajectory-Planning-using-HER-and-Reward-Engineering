@@ -4,7 +4,7 @@ from ddpg import Agent
 
 def reward_engg(goal_pos, current_pos, initial_pos):
     max_dist = np.linalg.norm(goal_pos - initial_pos)
-    min_dist = 0.0001
+    min_dist = 0
     curr_dist = np.linalg.norm(goal_pos - current_pos)
     value = (max_dist - curr_dist)/(max_dist - min_dist)
     reward = (value ) * (1 - (-1)) + (-1)
