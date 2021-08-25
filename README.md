@@ -13,6 +13,7 @@ Trajectory planning based on Reinforcement Learning with Hindsight Experience Re
 |HER Training|Dense Reward Engg. Training|
 |:--:|:--:|
 |<img src="Profile/data/HER Training Profile.png" width="400">|<img src="Profile/data/RE Training Profile.png" width="400">|
+|<img src="HER/data/test.gif" width="400">|<img src="Reward Engineering/data/test.gif" width="235">|
 
 ## Testing Profile
 
@@ -31,12 +32,12 @@ pip3 install -r requirements.txt
 ## Observations
 
 1. Final position of 'HER' & 'Reward Engineering' is kinda shaky!
-
-* Preview of Reward Engineering,
-    <p ><img src="reward_engg.gif" width="400" ></p>
+2. HER based TD3 Agent Mean Test Score: -1.66
+3. RE based TD3 Agent Mean Test Score: -1.69
+4. Test Performance Ratio (HER Agent | RE Agent)=(0.98 | 1)
 
 ## Developer
 
 * Name: Kanishk Navale
 * Email: navalekanishk@gmail.com
-* Website: navalekanishk@gmail.com
+* Website: https://kanishknavale.github.io/

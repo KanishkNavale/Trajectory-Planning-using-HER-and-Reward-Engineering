@@ -45,3 +45,8 @@ plt.ylabel('Rewards')
 plt.legend(loc='best')
 plt.title('Testing Profiles')
 plt.savefig(path + '/Profile/data/' + 'Testing Profile.png')
+
+# Analysis
+print(f'HER based TD3 Agent Mean Test Score: {sum_testher[-1]/len(sum_testher)}')
+print(f'RE based TD3 Agent Mean Test Score: {sum_testre[-1]/len(sum_testre)}')
+print(f'Test Performance Ratio (HER Agent | RE Agent)=({(sum_testher[-1]/len(sum_testher))/(sum_testre[-1]/len(sum_testre))} | 1)')

@@ -15,6 +15,7 @@ data_path = os.getcwd() + '/Reward Engineering/data/'
 env = gym.make('FetchReach-v1')
 OBS = env.reset()
 
+
 # Init. Agent
 agent = Agent(env)
 
@@ -47,7 +48,7 @@ for i in range(n_games):
 
     while not done:
         # Render
-        # env.render()
+        env.render()
 
         # Unpack the observation
         state, curr_actgoal, curr_desgoal = OBS.values()
@@ -67,4 +68,6 @@ for i in range(n_games):
 
     test_score.append(score)
     np.save(data_path + 'test_score', test_score, allow_pickle=False)
+
+# Close renders
 env.close()
