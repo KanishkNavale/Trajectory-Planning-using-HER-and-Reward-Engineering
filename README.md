@@ -39,4 +39,4 @@ pip3 install -r requirements.txt
 
 * Name: Kanishk Navale
 * Email: navalekanishk@gmail.com
-* website: navalekanishk@gmail.com
+* Website: navalekanishk@gmail.com
