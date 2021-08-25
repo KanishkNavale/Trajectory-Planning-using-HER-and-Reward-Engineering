@@ -1,40 +1,42 @@
 # Trajectory Planning using HER & Reward Engineering
-Trajectory planning based on Reinforcement Learning with Hindsight Experience Replay and Dense Reward Engineering to solve openai-gym robotics "FetchReach-v1" environment using TensorFlow.
 
-## Reinforcement Learning Algorithms,
-1. Dense Reward Engineering <br />
-    Augmented the sparse reward into dense rewards. Used the initial EOAT position to map the distance with Target position. As the distance reduces the reward increases. Rescaled the reward into a range of [-1,1].
+Trajectory planning based on Reinforcement Learning with Hindsight Experience Replay & Dense Reward Engineering to solve openai-gym robotics "FetchReach-v1" environment using TF2.
 
-2. Hindsight Experience Relay (HER) <br />
-    Tricked the environment that it reached the goal. 
+## Reinforcement Learning Algorithms
 
-3. HER + Dense Reward Engineering <br />
-    Combination of (1) and (2)
+1. Dense Reward Engineering: Engineered vector based distance measure to replace sparse rewards.
 
-## Training History,
-* Measure: Accumulated Rewards over Episodes
-1. Dense Reward Engineering,
-    <p ><img src="Test Analysis/Reward Engg: Accumulated Rewards vs Episodes.png" width="400" ></p>
+2. Hindsight Experience Relay (HER): Implemented HER Future Strategy based goal sampling for buffer augmentation.
 
-2. HER,
-    <p ><img src="Test Analysis/HER: Accumulated Rewards vs Episodes.png" width="400" ></p>
+## Training Profile
 
-3. HER + Dense Reward Engineering,
-    <p ><img src="Test Analysis/HER + Reward Engg: Accumulated Rewards vs Episodes.png" width="400" ></p>
+|HER Training|Dense Reward Engg. Training|
+|:--:|:--:|
+|<img src="Profile/data/HER Training Profile.png" width="400">|<img src="Profile/data/RE Training Profile.png" width="400">|
 
-## Dependencies,
+## Testing Profile
+
+<img src="Profile/data/Testing Profile.png" width="400">
+
+## Dependencies
+
 Install dependencies using:
+
 ```bash
 pip3 install -r requirements.txt 
 ```
+
 1. Additionally install 'mujoco_py' according to 'https://github.com/openai/mujoco-py'
 
-## Observations,
-1. Final position of 'HER' & 'Reward Engineering' is jittering.
-2. 'HER + Reward Engineering' is less jittery but has a offset in final position.
+## Observations
+
+1. Final position of 'HER' & 'Reward Engineering' is kinda shaky!
 
 * Preview of Reward Engineering,
     <p ><img src="reward_engg.gif" width="400" ></p>
 
-## Contact
-* email: navalekanishk@gmail.com
+## Developer
+
+* Name: Kanishk Navale
+* Email: navalekanishk@gmail.com
+* website: navalekanishk@gmail.com
