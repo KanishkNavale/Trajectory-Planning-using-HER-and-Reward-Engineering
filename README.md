@@ -13,7 +13,7 @@ Trajectory planning based on Reinforcement Learning with Hindsight Experience Re
 |HER Training|Dense Reward Engg. Training|
 |:--:|:--:|
 |<img src="Profile/data/HER Training Profile.png" width="400">|<img src="Profile/data/RE Training Profile.png" width="400">|
-|<img src="HER/data/test.gif" width="400">|<img src="Reward Engineering/data/test.gif" width="400">|
+|<img src="HER/data/test.gif" width="400">|<img src="Reward Engineering/data/test.gif" width="350">|
 
 ## Testing Profile
 
