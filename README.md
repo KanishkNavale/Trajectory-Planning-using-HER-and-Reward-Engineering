@@ -29,6 +29,34 @@ pip3 install -r requirements.txt
 
 1. Additionally install 'mujoco_py' according to 'https://github.com/openai/mujoco-py'
 
+## Execution Instructions
+
+In the repository file location invoke the 'bash' terminal.
+
+1. To train the HER model,
+
+```bash
+python3 HER/train.py
+```
+
+2. To train the Dense Reward Engg. model,
+
+```bash
+python3 Reward\ Engineering/train.py
+```
+
+3. To test the HER model,
+
+```bash
+python3 HER/test.py
+```
+
+4. To train the Dense Reward Engg. model,
+
+```bash
+python3 Reward\ Engineering/test.py 
+```
+
 ## Observations
 
 1. Final position of 'HER' & 'Reward Engineering' is kinda shaky!
