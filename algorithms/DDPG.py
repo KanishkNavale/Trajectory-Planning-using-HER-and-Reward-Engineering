@@ -91,8 +91,8 @@ class Agent:
     def __init__(self,
                  env: Env,
                  training: bool = True,
-                 alpha=1e-3,
-                 beta=1e-2,
+                 alpha=1e-4,
+                 beta=1e-3,
                  gamma=0.99,
                  tau=0.005,
                  batch_size: int = 256,
@@ -102,8 +102,9 @@ class Agent:
         self.gamma = torch.tensor(gamma, dtype=torch.float32, device=device)
         self.tau = tau
         self.n_games = n_games
+        self.env = env
 
-        self.max_size: int = (env._max_episode_steps * n_games)
+        self.max_size: int = (env._max_episode_steps * n_games * 2)
         self.memory = ReplayBuffer(self.max_size)
         self.batch_size = batch_size
 
