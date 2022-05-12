@@ -14,17 +14,27 @@ Trajectory planning based on Reinforcement Learning with Hindsight Experience Re
 
 1. Dense Reward Engineering
 
-    |DDPG Agent|PER + DDPG Agent|
-    |:--:|:--:|
-    |<img src="dense_rewards/uniform/data/DDPG with Dense Rewards.png" width="400">|<img src="dense_rewards/prioritized/data/PDDPG with Dense Rewards.png" width="400">|
+    |DDPG Agent|
+    |:--:|
+    |<img src="dense_rewards/uniform/data/DDPG with Dense Rewards.png">|
+    |PER + DDPG Agent|
+    |<img src="dense_rewards/prioritized/data/PDDPG with Dense Rewards.png">|
 
 2. Hindsight Experience Repay
 
-    |DDPG Agent|PER + DDPG Agent|
-    |:--:|:--:|
-    |<img src="sparse_rewards/prioritized/data/HER + PDDPG with Dense Rewards.png" width="400">|<img src="sparse_rewards/uniform/data/HER + DDPG with Dense Rewards.png" width="400">|
+    |DDPG Agent|
+    |:--:|
+    |<img src="sparse_rewards/prioritized/data/HER + PDDPG with Dense Rewards.png">|
+    |PER + DDPG Agent|
+    |<img src="sparse_rewards/uniform/data/HER + DDPG with Dense Rewards.png">|
 
 ## Play Preview
+
+* Previews from older implementation in TF2.
+
+    |Dense Rewards|HER|
+    |:--:|:--:|
+    |<img src="Tensorflow2 Implementation (old)/Reward Engineering/data/test.gif">|<img src="Tensorflow2 Implementation (old)/HER/data/test.gif">|
 
 ## Dependencies
 
